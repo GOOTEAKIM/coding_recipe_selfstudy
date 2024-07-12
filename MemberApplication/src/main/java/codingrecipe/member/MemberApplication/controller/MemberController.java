@@ -58,6 +58,7 @@ public class MemberController {
         List<MemberDTO> memberDTOList = memberService.findAll();
         // 어떠한 html로 가져갈 데이터가 있다면 model 사용
         model.addAttribute("memberList", memberDTOList);
+        System.out.println(model);
         return "list";
     }
 
