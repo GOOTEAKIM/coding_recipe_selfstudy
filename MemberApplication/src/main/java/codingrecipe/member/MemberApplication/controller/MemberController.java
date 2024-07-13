@@ -98,4 +98,17 @@ public class MemberController {
         return "index";
     }
 
+    @PostMapping("/member/email-check")
+    // ajax 쓸 떄는 ResponseBody를 붙여야함
+    public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
+        System.out.println("memberEmail = " + memberEmail);
+        String checkResult = memberService.emailCheck(memberEmail);
+        return checkResult;
+//        if (checkResult != null) {
+//            return "ok";
+//        } else {
+//            return "no";
+//        }
+    }
+
 }
