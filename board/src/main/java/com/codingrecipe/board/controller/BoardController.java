@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -27,7 +28,7 @@ public class BoardController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute BoardDTO boardDTO) {
+    public String save(@ModelAttribute BoardDTO boardDTO) throws IOException {
         System.out.println("boardDTO = " + boardDTO);
         boardService.save(boardDTO);
         return "index";
@@ -42,7 +43,8 @@ public class BoardController {
     }
 
     @GetMapping("/{id}")
-    public String findById(@PathVariable("id") Long id, Model model) {
+    public String findById(@PathVariable("id") Long id, Model model,
+                           @PageableDefault(page = 1) Pageable pageable) {
         // 경로에 있을 때는 @PathVariable 사용
         /*
             해당 게시글의 조회수를 하나 올리고
@@ -51,6 +53,7 @@ public class BoardController {
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
+        model.addAttribute("page", pageable.getPageNumber());
         return "detail";
     }
 
@@ -93,5 +96,7 @@ public class BoardController {
         model.addAttribute("endPage", endPage);
         return "paging";
     }
+
+
 
 }
