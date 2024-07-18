@@ -33,7 +33,8 @@ const nations = [{
 }]
 
 const Info = () => {
-    return(
+
+    return (
         <div className="info-page page">
             <h2>Info.jsx</h2>
             <p>{nation.name}, {nation.population}, {nation.capital}, {nation.language}</p>
@@ -43,5 +44,4 @@ const Info = () => {
         </div>
     );
 }
-
 export default Info;

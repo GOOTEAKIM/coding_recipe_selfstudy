@@ -1,6 +1,5 @@
 * {
     margin: 0;
-
 }
 
 .header {
@@ -16,6 +15,12 @@
 .home {
     background-color: dodgerblue;
     height: 200px;
+}
+
+.page {
+    background-color: dodgerblue;
+    height: 200px;
+    color: white;
 }
 
 .footer {
